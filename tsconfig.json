@@ -1,13 +1,23 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "commonjs", // <-- ESM değil, "commonjs" YAP
+    "module": "commonjs",
     "moduleResolution": "node",
     "rootDir": "src",
     "outDir": "dist",
     "esModuleInterop": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types" // ✅ BU SATIR MUTLAKA OLMALI
+    ]
   },
   "include": [
     "src/**/*"

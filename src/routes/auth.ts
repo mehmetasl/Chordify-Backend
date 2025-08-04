@@ -7,6 +7,36 @@ export const authRouter = Router();
 // 📝 KAYIT (Register)
 authRouter.post('/register', async (req, res) => {
     const { email, password, username } = req.body;
+    /**
+ * @swagger
+ * /auth/register:
+ *   post:
+ *     summary: Yeni kullanıcı kaydı
+ *     description: Email ve şifre ile yeni kullanıcı oluşturur
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               password:
+ *                 type: string
+ *                 format: password
+ *               username:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Kayıt başarılı
+ *       400:
+ *         description: Geçersiz veri
+ */
 
     if (!email || !password) {
         return res.status(400).json({ error: 'Email ve şifre zorunlu!' });
@@ -51,6 +81,34 @@ authRouter.post('/register', async (req, res) => {
 // 🔐 GİRİŞ (Login)
 authRouter.post('/login', async (req, res) => {
     const { email, password } = req.body;
+    /**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: Kullanıcı girişi
+ *     description: Mevcut kullanıcı email ve şifre ile giriş yapar
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               password:
+ *                 type: string
+ *                 format: password
+ *     responses:
+ *       200:
+ *         description: Giriş başarılı
+ *       401:
+ *         description: Kimlik doğrulama hatası
+ */
 
     if (!email || !password) {
         return res.status(400).json({ error: 'Email ve şifre zorunlu!' });
